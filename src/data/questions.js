@@ -12,7 +12,8 @@ export const questions = [
         return { 
           level: "High", 
           message: "Lack of a formal environmental policy indicates a potential gap in managing environmental risks.",
-          recommendation: "Develop a formal environmental policy that outlines your company's commitment to environmental protection and sustainability."
+          recommendation: "Develop a formal environmental policy that outlines your company's commitment to environmental protection and sustainability.",
+          category: "Environmental"
         };
       }
       return null;
@@ -29,7 +30,8 @@ export const questions = [
         return { 
           level: "Medium", 
           message: "Without tracking energy consumption, it's difficult to identify opportunities for energy efficiency and cost savings.",
-          recommendation: "Start tracking your company's energy consumption. This is the first step towards identifying energy-saving opportunities."
+          recommendation: "Start tracking your company's energy consumption. This is the first step towards identifying energy-saving opportunities.",
+          category: "Environmental"
         };
       }
       return null;
@@ -46,7 +48,8 @@ export const questions = [
         return { 
           level: "High", 
           message: "Without a supplier code of conduct, you have limited visibility into the social and environmental risks within your supply chain.",
-          recommendation: "Develop a supplier code of conduct that outlines your expectations for social and environmental performance."
+          recommendation: "Develop a supplier code of conduct that outlines your expectations for social and environmental performance.",
+          category: "Social"
         };
       }
       return null;
@@ -66,13 +69,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Lack of a waste management strategy can lead to non-compliance with EU waste regulations and reputational damage.",
-          recommendation: "Develop a formal waste management policy that includes recycling, waste reduction targets, and employee training. Comply with the EU Waste Framework Directive."
+          recommendation: "Develop a formal waste management policy that includes recycling, waste reduction targets, and employee training. Comply with the EU Waste Framework Directive.",
+          category: "Environmental"
         };
       } else if (answer === "We recycle some materials, but do not have a formal waste reduction program.") {
         return { 
           level: "Medium", 
           message: "A partial recycling program is a good start, but a formal waste reduction program is needed to mitigate risks.",
-          recommendation: "Expand your recycling program and set measurable waste reduction targets. Communicate your progress to stakeholders."
+          recommendation: "Expand your recycling program and set measurable waste reduction targets. Communicate your progress to stakeholders.",
+          category: "Environmental"
         };
       }
       return null;
@@ -90,13 +95,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Failure to provide written contracts can result in legal challenges and fines under EU labor law.",
-          recommendation: "Immediately implement written contracts for all employees that comply with the EU's Transparent and Predictable Working Conditions Directive."
+          recommendation: "Immediately implement written contracts for all employees that comply with the EU's Transparent and Predictable Working Conditions Directive.",
+          category: "Social"
         };
       } else if (answer === "Some employees have written contracts, but not all.") {
         return { 
           level: "Medium", 
           message: "Inconsistent use of contracts can create legal risks and inequality among employees.",
-          recommendation: "Ensure that all employees, including part-time and temporary staff, have written contracts that clearly outline their rights and responsibilities."
+          recommendation: "Ensure that all employees, including part-time and temporary staff, have written contracts that clearly outline their rights and responsibilities.",
+          category: "Social"
         };
       }
       return null;
@@ -114,13 +121,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Non-compliance with GDPR can result in severe fines and loss of customer trust.",
-          recommendation: "Develop and implement a GDPR-compliant data privacy policy immediately. This should include appointing a Data Protection Officer (DPO) if necessary."
+          recommendation: "Develop and implement a GDPR-compliant data privacy policy immediately. This should include appointing a Data Protection Officer (DPO) if necessary.",
+          category: "Governance"
         };
       } else if (answer === "We have some data privacy measures in place, but are not fully GDPR compliant.") {
         return { 
           level: "Medium", 
           message: "Partial GDPR compliance is not enough to avoid legal and financial risks.",
-          recommendation: "Conduct a full audit of your data processing activities to identify and rectify any gaps in your GDPR compliance."
+          recommendation: "Conduct a full audit of your data processing activities to identify and rectify any gaps in your GDPR compliance.",
+          category: "Governance"
         };
       }
       return null;
@@ -140,13 +149,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Improper disposal of hazardous waste can lead to severe environmental damage and legal penalties.",
-          recommendation: "Immediately establish a procedure for identifying and separating hazardous waste. Contract with a certified waste management company for its disposal."
+          recommendation: "Immediately establish a procedure for identifying and separating hazardous waste. Contract with a certified waste management company for its disposal.",
+          category: "Environmental"
         };
       } else if (answer === "We separate some hazardous waste, but do not have a formal procedure.") {
         return { 
           level: "Medium", 
           message: "Without a formal procedure, there is a risk of improper hazardous waste disposal.",
-          recommendation: "Document your hazardous waste management procedure and provide training to all relevant employees to ensure compliance."
+          recommendation: "Document your hazardous waste management procedure and provide training to all relevant employees to ensure compliance.",
+          category: "Environmental"
         };
       }
       return null;
@@ -164,13 +175,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Probationary periods longer than 6 months may be in breach of the Transparent and Predictable Working Conditions Directive.",
-          recommendation: "Review and amend your employment contracts to ensure that probationary periods do not exceed 6 months."
+          recommendation: "Review and amend your employment contracts to ensure that probationary periods do not exceed 6 months.",
+          category: "Social"
         };
       } else if (answer === "We do not have a standard probationary period.") {
         return { 
           level: "Medium", 
           message: "Lack of a standard probationary period can lead to inconsistencies and perceived unfairness.",
-          recommendation: "Establish a standard probationary period of up to 6 months for all new employees."
+          recommendation: "Establish a standard probationary period of up to 6 months for all new employees.",
+          category: "Social"
         };
       }
       return null;
@@ -188,13 +201,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Failure to notify the authorities of a data breach within 72 hours is a violation of GDPR and can result in significant fines.",
-          recommendation: "Develop and implement a data breach response plan that includes notifying the relevant supervisory authority within 72 hours."
+          recommendation: "Develop and implement a data breach response plan that includes notifying the relevant supervisory authority within 72 hours.",
+          category: "Governance"
         };
       } else if (answer === "We would notify the authorities, but we do not have a documented procedure or a specific timeframe.") {
         return { 
           level: "Medium", 
           message: "Without a documented procedure, you risk a delayed or inadequate response to a data breach.",
-          recommendation: "Document your data breach notification procedure, including roles and responsibilities, and ensure all relevant staff are trained on it."
+          recommendation: "Document your data breach notification procedure, including roles and responsibilities, and ensure all relevant staff are trained on it.",
+          category: "Governance"
         };
       }
       return null;
@@ -214,13 +229,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Under the new Energy Efficiency Directive, many SMEs are now required to conduct energy audits. Failure to do so could result in non-compliance.",
-          recommendation: "Urgently assess if your company meets the criteria for a mandatory energy audit. Even if not mandatory, conducting an audit can lead to significant cost savings."
+          recommendation: "Urgently assess if your company meets the criteria for a mandatory energy audit. Even if not mandatory, conducting an audit can lead to significant cost savings.",
+          category: "Environmental"
         };
       } else if (answer === "Yes, we have conducted an energy audit but have not yet implemented all the recommendations.") {
         return { 
           level: "Medium", 
           message: "While you have conducted an audit, failing to implement the recommendations means you are missing out on potential energy and cost savings.",
-          recommendation: "Prioritize the implementation of the recommendations from your energy audit. Look for government support programs to help with the costs."
+          recommendation: "Prioritize the implementation of the recommendations from your energy audit. Look for government support programs to help with the costs.",
+          category: "Environmental"
         };
       }
       return null;
@@ -238,13 +255,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "A documented risk assessment is a legal requirement under the EU Health and Safety at Work Directive. Failure to have one can result in fines and, more importantly, a dangerous workplace.",
-          recommendation: "Immediately conduct a thorough risk assessment of your workplace. Use the free Online interactive Risk Assessment (OiRA) tool provided by the EU."
+          recommendation: "Immediately conduct a thorough risk assessment of your workplace. Use the free Online interactive Risk Assessment (OiRA) tool provided by the EU.",
+          category: "Social"
         };
       } else if (answer === "We have a risk assessment, but it is not regularly updated.") {
         return { 
           level: "Medium", 
           message: "An outdated risk assessment may not reflect the current hazards in your workplace.",
-          recommendation: "Review and update your risk assessment regularly, especially when there are changes in the workplace."
+          recommendation: "Review and update your risk assessment regularly, especially when there are changes in the workplace.",
+          category: "Social"
         };
       }
       return null;
@@ -262,13 +281,15 @@ export const questions = [
         return { 
           level: "High", 
           message: "Companies with 50 or more employees are required to have an internal reporting channel for whistleblowers. Failure to comply can lead to legal penalties.",
-          recommendation: "If you have 50 or more employees, you must establish a secure and confidential internal reporting channel immediately. If you have fewer than 50 employees, it is still best practice to have one."
+          recommendation: "If you have 50 or more employees, you must establish a secure and confidential internal reporting channel immediately. If you have fewer than 50 employees, it is still best practice to have one.",
+          category: "Governance"
         };
       } else if (answer === "We have a reporting channel, but it may not be fully compliant with the directive.") {
         return { 
           level: "Medium", 
           message: "A non-compliant reporting channel may not provide adequate protection for whistleblowers and could expose your company to legal risks.",
-          recommendation: "Review your current reporting channel to ensure it meets all the requirements of the EU Whistleblower Protection Directive, including confidentiality and protection against retaliation."
+          recommendation: "Review your current reporting channel to ensure it meets all the requirements of the EU Whistleblower Protection Directive, including confidentiality and protection against retaliation.",
+          category: "Governance"
         };
       }
       return null;

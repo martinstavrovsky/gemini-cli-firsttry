@@ -4,26 +4,23 @@ import RiskResult from './RiskResult';
 import {
   Container,
   Typography,
-  Button,
-  Card,
-  CardContent,
-  FormControl,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
   LinearProgress,
 } from '@mui/material';
+import QuestionCard from './QuestionCard';
+import QuestionNavigation from './QuestionNavigation';
 
 const Questionnaire = () => {
   const [answers, setAnswers] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [isCurrentQuestionAnswered, setIsCurrentQuestionAnswered] = useState(false);
 
   const handleAnswerChange = (questionIndex, answer) => {
     setAnswers({
       ...answers,
       [questionIndex]: answer,
     });
+    setIsCurrentQuestionAnswered(true);
   };
 
   const handleSubmit = () => {
@@ -32,6 +29,12 @@ const Questionnaire = () => {
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setIsCurrentQuestionAnswered(false); // Reset for the next question
+  };
+
+  const handlePrevious = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    setIsCurrentQuestionAnswered(true); // Assume previous question was answered
   };
 
   const totalPossibleScore = questions.reduce((acc, question) => {
@@ -63,46 +66,22 @@ const Questionnaire = () => {
       {!submitted ? (
         <>
           <LinearProgress variant="determinate" value={progress} sx={{ mb: 2 }} />
-          <Card>
-            <CardContent>
-              <Typography variant="h6" component="p" gutterBottom>
-                {questions[activeStep].question}
-              </Typography>
-              <FormControl component="fieldset">
-                <RadioGroup
-                  aria-label="question"
-                  name="question"
-                  value={answers[activeStep]?.text || ''}
-                  onChange={(e) =>
-                    handleAnswerChange(
-                      activeStep,
-                      questions[activeStep].options.find((o) => o.text === e.target.value)
-                    )
-                  }
-                >
-                  {questions[activeStep].options.map((option) => (
-                    <FormControlLabel
-                      key={option.text}
-                      value={option.text}
-                      control={<Radio />}
-                      label={option.text}
-                    />
-                  ))}
-                </RadioGroup>
-              </FormControl>
-            </CardContent>
-          </Card>
-          <div style={{ marginTop: '20px' }}>
-            {activeStep < questions.length - 1 ? (
-              <Button variant="contained" onClick={handleNext}>
-                Next
-              </Button>
-            ) : (
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Submit
-              </Button>
-            )}
-          </div>
+          <Typography variant="body2" color="text.secondary" align="right" sx={{ mb: 2 }}>
+            Question {activeStep + 1} of {questions.length}
+          </Typography>
+          <QuestionCard
+            question={questions[activeStep]}
+            selectedAnswer={answers[activeStep]}
+            onAnswerChange={(answer) => handleAnswerChange(activeStep, answer)}
+          />
+          <QuestionNavigation
+            activeStep={activeStep}
+            questionsLength={questions.length}
+            onPrevious={handlePrevious}
+            onNext={handleNext}
+            onSubmit={handleSubmit}
+            isCurrentQuestionAnswered={isCurrentQuestionAnswered}
+          />
         </>
       ) : (
         <RiskResult risks={risks} score={percentage} />

@@ -1,15 +1,7 @@
 
 import React from 'react';
-import {
-  Container,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  Box,
-  CircularProgress,
-} from '@mui/material';
+import { Container, Typography, List, ListItem, ListItemText, Paper, Box, CircularProgress, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 const RiskResult = ({ risks, score }) => {
   const getRiskColor = (level) => {
@@ -60,16 +52,36 @@ const RiskResult = ({ risks, score }) => {
           Associated Risks
         </Typography>
         {risks.length > 0 ? (
-          <List>
-            {risks.map((risk, index) => (
-              <ListItem key={index} sx={{ borderLeft: `4px solid ${getRiskColor(risk.level)}`, my: 1 }}>
-                <ListItemText
-                  primary={`${risk.level} Risk: ${risk.message}`}
-                  secondary={`Recommendation: ${risk.recommendation}`}
-                />
-              </ListItem>
+          <>
+            {Object.entries(
+              risks.reduce((acc, risk) => {
+                const category = risk.category || 'Uncategorized';
+                if (!acc[category]) {
+                  acc[category] = [];
+                }
+                acc[category].push(risk);
+                return acc;
+              }, {})
+            ).map(([category, categoryRisks]) => (
+              <Accordion key={category} sx={{ mt: 2 }}>
+                <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                  <Typography variant="h6">{category} Risks</Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <List>
+                    {categoryRisks.map((risk, index) => (
+                      <ListItem key={index} sx={{ borderLeft: `4px solid ${getRiskColor(risk.level)}`, my: 1 }}>
+                        <ListItemText
+                          primary={`${risk.level} Risk: ${risk.message}`}
+                          secondary={`Recommendation: ${risk.recommendation}`}
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </AccordionDetails>
+              </Accordion>
             ))}
-          </List>
+          </>
         ) : (
           <Typography variant="body1">No significant risks identified.</Typography>
         )}
