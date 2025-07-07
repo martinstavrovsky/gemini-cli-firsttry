@@ -48,10 +48,10 @@ describe('RiskResult', () => {
     expect(screen.getByText('Social Risks')).toBeInTheDocument();
     expect(screen.getByText('Governance Risks')).toBeInTheDocument();
 
-    expect(screen.getByText(/High environmental risk/i)).toBeInTheDocument();
-    expect(screen.getByText(/Medium social risk/i)).toBeInTheDocument();
-    expect(screen.getByText(/Low governance risk/i)).toBeInTheDocument();
-    expect(screen.getByText(/Another high environmental risk/i)).toBeInTheDocument();
+    expect(screen.getByText('High Risk: High environmental risk')).toBeInTheDocument();
+    expect(screen.getByText('Medium Risk: Medium social risk')).toBeInTheDocument();
+    expect(screen.getByText('Low Risk: Low governance risk')).toBeInTheDocument();
+    expect(screen.getByText('High Risk: Another high environmental risk')).toBeInTheDocument();
   });
 
   test('displays correct risk levels and recommendations', () => {

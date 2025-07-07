@@ -8,6 +8,7 @@ import { questions } from '../data/questions';
 jest.mock('../data/questions', () => ({
   questions: [
     {
+      category: 'Test',
       question: "Test Question 1",
       options: [
         { text: "Option 1A", score: 1 },
@@ -16,6 +17,7 @@ jest.mock('../data/questions', () => ({
       risk: (answer) => (answer === "Option 1B" ? { level: "High", message: "Risk 1", recommendation: "Rec 1", category: "Environmental" } : null),
     },
     {
+      category: 'Test',
       question: "Test Question 2",
       options: [
         { text: "Option 2A", score: 1 },

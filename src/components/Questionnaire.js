@@ -69,6 +69,9 @@ const Questionnaire = () => {
           <Typography variant="body2" color="text.secondary" align="right" sx={{ mb: 2 }}>
             Question {activeStep + 1} of {questions.length}
           </Typography>
+          <Typography variant="h6" component="h2" sx={{ mt: 3, mb: 1 }}>
+            {questions[activeStep].category}
+          </Typography>
           <QuestionCard
             question={questions[activeStep]}
             selectedAnswer={answers[activeStep]}
